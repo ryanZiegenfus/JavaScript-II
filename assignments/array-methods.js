@@ -56,28 +56,43 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+runners.forEach(obj => fullName.push(`${obj.first_name} ${obj.last_name}`));
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+runners.map(cap => allCaps.push(cap.first_name.toUpperCase()));
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+largeShirts.push(runners.filter(runnerObj => runnerObj.shirt_size == "L"));
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+ticketPriceTotal = runners.reduce((total, tally) => tally.donation + total, 0);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1 - Company Skinix dropped out of the race. Update list of runnners.
+let new_runners = [];
+new_runners = runners.filter(runner => runner.company_name !== "Skinix");
+console.log(new_runners);
 
-// Problem 2
+// Problem 2 - Average donation
+let ticketPriceAvg = [];
+ticketPriceAvg = new_runners.reduce((total, runner) => (runner.donation/new_runners.length) + total, 0);
+console.log(ticketPriceAvg);
 
-// Problem 3
+// Problem 3 - Send gift packet/thank you letter to runners with donations of $200 or more. Gather email addresses of eligible runners to notify them.
+let OG_runners = [];
+OG_runners = (new_runners.filter(runner => runner.donation >= 200));
+OG_emails = OG_runners.map(runner => runner.email);
+console.log(OG_runners);
+console.log(OG_emails);
