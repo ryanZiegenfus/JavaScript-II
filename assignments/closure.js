@@ -14,8 +14,8 @@ c();
 
 
 // ==== Challenge 2: Create a counter function ====
-const counter = (num) => {
-  var count = num;
+const counter = () => {
+  var count = 0;
   function inner() {
     console.log(count += 1);
     return count;
@@ -28,7 +28,7 @@ const counter = (num) => {
 // newCounter(); // 1
 // newCounter(); // 2
 
-var test = counter(0);
+var test = counter();
 test();
 test();
 
